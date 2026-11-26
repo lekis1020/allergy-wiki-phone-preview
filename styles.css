@@ -2330,6 +2330,15 @@ button.card.score-area-card {
   font-weight: 700;
   letter-spacing: -0.3px;
 }
+
+/* MAA-94: unify Drugs hub browse titles (교차반응 + 첨가제 검색) */
+.drugs-hub-browse-title {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+}
 .score-tool-head {
   display: flex;
   align-items: flex-start;
