@@ -1025,7 +1025,8 @@
       } else {
         groups = '<div class="groups">' + pairCard("safer", safer, true) + pairCard("high", high, true) + "</div>";
       }
-      return drugsHubBackBtn() + drugsHubSearchOnly() + keyword + segment + graph + groups;
+      /* Shared result chrome with additives: back → keyword+Note → segment → body. */
+      return drugsHubBackBtn() + keyword + segment + graph + groups;
     }
 
     function renderDrugsHubAdditives() {
@@ -1045,6 +1046,7 @@
         return drugsHubBackBtn() + head + segment + renderAdditiveDetail() + source;
       }
       if (keyword) {
+        /* Same chrome order as 교차반응 result: keyword → segment → mode body. */
         return drugsHubBackBtn() + keyword + segment + search + renderAdditiveResults() + source;
       }
       return '<h2 class="screen-title additive-title">첨가제 검색</h2>' +
@@ -1409,7 +1411,13 @@
         ? '<span class="reason">' + esc(item.reason) + "</span>"
         : "";
       const pending = item.pendingRow ? '<span class="pending-mark">Source pending</span>' : "";
-      return '<div class="row pair-row"><div class="row-text"><span class="row-name">' + esc(name) + "</span>" +
+      const pickId = lookupIdForName(name);
+      /* Tap row-text (not Note ›) to open that drug’s hub detail — same as Amoxicillin search. */
+      const textOpen = pickId
+        ? ' role="button" tabindex="0" data-pick-drug="' + esc(pickId) + '" aria-label="Open ' + esc(name) + ' cross-reactivity"'
+        : "";
+      return '<div class="row pair-row' + (pickId ? " is-nav" : "") + '"><div class="row-text"' + textOpen +
+        '><span class="row-name">' + esc(name) + "</span>" +
         reason + pending + "</div>" + noteBtn(pairNoteId(item)) + "</div>";
     }
 
@@ -1473,7 +1481,7 @@
     function drugHeader(entry, inCard) {
       const noteId = typeof entry.id === "string" ? entry.id : state.drugId;
       const pending = entry.pending ? '<p class="header-pending">Source pending</p>' : "";
-      const inner = '<div class="headline"><h2 class="screen-title">' + esc(entry.name) + "</h2>" +
+      const inner = '<div class="headline drugs-hub-keyword"><h2 class="screen-title">' + esc(entry.name) + "</h2>" +
         noteBtn(noteId) + "</div>" + pending;
       return inCard ? '<section class="card header-card">' + inner + "</section>" : inner;
     }
@@ -1709,6 +1717,17 @@
             box.x + box.w / 2,
             box.y + labelH / 2 + 0.5
           );
+          /* Dense overview boxes: count caption instead of colliding per-drug names. */
+          if (!focused && region.denseCount && region.denseCount > 4) {
+            ctx.font = '600 10px Inter, "WenQuanYi Micro Hei", sans-serif';
+            ctx.fillStyle = "rgba(36, 34, 30, 0.55)";
+            ctx.textBaseline = "bottom";
+            ctx.fillText(
+              region.denseCount + " · 탭하여 확대",
+              box.x + box.w / 2,
+              box.y + box.h - 5
+            );
+          }
         } else {
           /* Legacy circular fallback */
           const r = region.radius || 34;
@@ -1726,6 +1745,9 @@
         }
       }
 
+      const classModePaint = classLabels.length > 0;
+      const centerNode = nodes.find((n) => n && n.kind === "center") || null;
+
       for (let i = 0; i < links.length; i += 1) {
         const link = links[i];
         const dim = !!(link.source && link.source.dimmed) || !!(link.target && link.target.dimmed);
@@ -1733,14 +1755,92 @@
           (link.source && (link.source.kind === "center" || link.source.selected)) ||
           (link.target && (link.target.kind === "center" || link.target.selected))
         );
+        const sx = link.source.x;
+        const sy = link.source.y;
+        const tx = link.target.x;
+        const ty = link.target.y;
         ctx.beginPath();
-        ctx.moveTo(link.source.x, link.source.y);
-        ctx.lineTo(link.target.x, link.target.y);
+        ctx.moveTo(sx, sy);
+        if (classModePaint && !dim) {
+          /* Route via a soft bend toward box mid so chords don't slash through labels. */
+          const mx = (sx + tx) / 2;
+          const my = (sy + ty) / 2;
+          const dx = tx - sx;
+          const dy = ty - sy;
+          const len = Math.max(1, Math.sqrt(dx * dx + dy * dy));
+          const bow = Math.min(28, len * 0.18);
+          const cxBend = mx - (dy / len) * bow * (ty > sy ? 1 : -1);
+          const cyBend = my + (dx / len) * bow * 0.35;
+          ctx.quadraticCurveTo(cxBend, cyBend, tx, ty);
+        } else {
+          ctx.lineTo(tx, ty);
+        }
         ctx.strokeStyle = linkStrokeColor(link, colors);
-        ctx.globalAlpha = dim ? 0.12 : (hot ? 0.9 : 0.72);
-        ctx.lineWidth = expanded ? (hot ? 2.4 : 2) : (hot ? 2 : 1.5);
+        ctx.globalAlpha = dim ? 0.1 : (classModePaint ? (hot ? 0.55 : 0.38) : (hot ? 0.9 : 0.72));
+        ctx.lineWidth = expanded ? (hot ? 2.4 : 2) : (classModePaint ? (hot ? 1.6 : 1.2) : (hot ? 2 : 1.5));
         ctx.stroke();
         ctx.globalAlpha = 1;
+      }
+
+      function paintNodeLabel(node, r, isFocus, classZoom) {
+        if (node.dimmed && focusKey) return;
+        if (node.hideLabel && !classZoom && !expanded && node.kind !== "center") return;
+        let label;
+        if (expanded || classZoom) {
+          label = shortLabel(node.label, node.kind === "center" ? 36 : (classZoom ? 16 : 28));
+        } else if (classModePaint && node.kind !== "center") {
+          const budget = typeof node.labelBudget === "number" ? node.labelBudget : (nodes.length > 22 ? 7 : 9);
+          label = shortLabel(node.label, budget);
+        } else {
+          const maxChars = node.kind === "center" ? 14 : (nodes.length > 18 ? 7 : 10);
+          label = shortLabel(node.label, maxChars);
+        }
+        ctx.font = (isFocus || classZoom
+          ? (expanded || classZoom ? "600 13px " : "600 11px ")
+          : (expanded ? "500 12px " : "500 10px ")) +
+          'Inter, "WenQuanYi Micro Hei", sans-serif';
+        const above = !!(focusKey && node.kind === "center");
+        let lx = node.x;
+        let ly = above ? node.y - r - 4 : node.y + r + 3;
+        let align = "center";
+        let baseline = above ? "bottom" : "top";
+        if (classZoom && node.labelRadial && node.kind !== "center") {
+          const ang = node.labelRadial.ang;
+          const out = r + 8;
+          lx = node.x + Math.cos(ang) * out;
+          ly = node.y + Math.sin(ang) * out;
+          if (Math.abs(Math.cos(ang)) > 0.55) {
+            align = Math.cos(ang) > 0 ? "left" : "right";
+            baseline = "middle";
+          } else if (Math.sin(ang) < 0) {
+            baseline = "bottom";
+          } else {
+            baseline = "top";
+          }
+        }
+        ctx.textAlign = align;
+        ctx.textBaseline = baseline;
+        const metrics = ctx.measureText(label);
+        const tw = Math.max(12, metrics.width);
+        const th = classZoom || expanded ? 13 : 11;
+        const padX = 3;
+        const padY = 1.5;
+        let bx = lx - tw / 2 - padX;
+        if (align === "left") bx = lx - padX;
+        if (align === "right") bx = lx - tw - padX;
+        let by = ly - padY;
+        if (baseline === "bottom") by = ly - th - padY;
+        if (baseline === "middle") by = ly - th / 2 - padY;
+        ctx.fillStyle = "rgba(248, 246, 242, 0.94)";
+        if (typeof ctx.roundRect === "function") {
+          ctx.beginPath();
+          ctx.roundRect(bx, by, tw + padX * 2, th + padY * 2, 3);
+          ctx.fill();
+        } else {
+          ctx.fillRect(bx, by, tw + padX * 2, th + padY * 2);
+        }
+        ctx.fillStyle = node.dimmed ? colors.muted : colors.ink;
+        ctx.fillText(label, lx, ly);
       }
 
       for (let i = 0; i < nodes.length; i += 1) {
@@ -1768,32 +1868,20 @@
           ctx.lineWidth = node.kind === "center" ? 1.6 : (classZoom ? 1.5 : 1.3);
           ctx.stroke();
         }
-
-        /* In class-zoom, skip dimmed labels so focus names stay readable. */
-        if (!(node.dimmed && focusKey)) {
-          let label;
-          if (expanded || classZoom) {
-            label = shortLabel(node.label, node.kind === "center" ? 36 : (classZoom ? 16 : 28));
-          } else {
-            const maxChars = node.kind === "center" ? 14 : (nodes.length > 18 ? 7 : 10);
-            label = shortLabel(node.label, maxChars);
-          }
-          ctx.font = (isFocus || classZoom
-            ? (expanded || classZoom ? "600 13px " : "600 11px ")
-            : (expanded ? "500 12px " : "500 10px ")) +
-            'Inter, "WenQuanYi Micro Hei", sans-serif';
-          ctx.fillStyle = node.dimmed ? colors.muted : colors.ink;
-          ctx.textAlign = "center";
-          /* Center label above node in zoom so it won't collide with lower focus labels. */
-          if (focusKey && node.kind === "center") {
-            ctx.textBaseline = "bottom";
-            ctx.fillText(label, node.x, node.y - r - 4);
-          } else {
-            ctx.textBaseline = "top";
-            ctx.fillText(label, node.x, node.y + r + 3);
-          }
-        }
+        paintNodeLabel(node, r, isFocus, classZoom);
         ctx.globalAlpha = 1;
+      }
+      /* Re-draw center on top so its label isn't buried under neighbor edges/labels. */
+      if (centerNode && classModePaint && !focusKey) {
+        const r = expanded ? 14 : 11;
+        ctx.beginPath();
+        ctx.arc(centerNode.x, centerNode.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = colors.center;
+        ctx.fill();
+        ctx.strokeStyle = "#1d4ed8";
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+        paintNodeLabel(centerNode, r, true, false);
       }
     }
 
@@ -2116,11 +2204,11 @@
       const boxes = {};
       if (!keys.length) return boxes;
       const counts = memberCounts && typeof memberCounts === "object" ? memberCounts : {};
-      const labelH = 20;
-      const margin = 4;
-      const gap = 4;
+      const labelH = 22;
+      const margin = 8;
+      const gap = 10;
       /* Clear focus drug + its label so no class title sits under Ampicillin. */
-      const holeR = 56;
+      const holeR = 68;
 
       if (zoomKey) {
         /* Leave a canvas rim so dimmed neighbors park outside the focus box. */
@@ -2215,11 +2303,12 @@
       for (let i = 0; i < n; i += 1) {
         const key = keys[i];
         const count = Math.max(1, counts[key] || 1);
-        const memberCols = Math.min(3, count);
-        const memberRows = Math.ceil(count / memberCols);
-        /* Size for readable in-box grid (node + label under). */
-        let bw = Math.min(cellW, Math.max(78, 28 + memberCols * 34));
-        let bh = Math.min(cellH, Math.max(58, labelH + 12 + memberRows * 28));
+        /* Dense classes: prefer 2 columns so under-node labels have vertical room. */
+        const memberCols = count <= 2 ? count : Math.min(2, count);
+        const memberRows = Math.ceil(count / Math.max(1, memberCols));
+        /* Size for readable in-box grid (node + label under) — roomier to cut overlaps. */
+        let bw = Math.min(cellW, Math.max(100, 40 + memberCols * 52));
+        let bh = Math.min(cellH, Math.max(86, labelH + 22 + memberRows * 48));
         const slot = slots[i] || { col: i % cols, row: Math.floor(i / cols) };
         const col = slot.col;
         const row = slot.row;
@@ -2425,7 +2514,7 @@
       const classMode = layout === "class";
       const zoomMode = !!(classMode && focusKey);
       const width = Math.max(240, Math.floor(root.clientWidth || 360));
-      const height = classMode ? (zoomMode ? 300 : 340) : 230;
+      const height = classMode ? (zoomMode ? 340 : 460) : 230;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
@@ -2514,9 +2603,10 @@
       function assignHomesInBox(memberIds, pack, opts) {
         const box = pack.box;
         const labelH = Math.max(16, box.labelH || 18);
-        const pad = (opts && opts.pad) || 10;
+        const pad = (opts && opts.pad) || 12;
+        /* Extra bottom clearance so under-node labels don't collide with the box edge. */
         const bodyTop = box.y + labelH + pad;
-        const bodyBottom = box.y + box.h - pad - 8;
+        const bodyBottom = box.y + box.h - pad - 16;
         const bodyLeft = box.x + pad;
         const bodyRight = box.x + box.w - pad;
         const bodyW = Math.max(24, bodyRight - bodyLeft);
@@ -2525,7 +2615,9 @@
         const cy0 = bodyTop + bodyH / 2;
         const count = memberIds.length;
         if (!count) return { cx0: cx0, cy0: cy0 };
-        let cols = Math.min(3, Math.max(1, Math.ceil(Math.sqrt(count))));
+        /* Prefer ≤2 columns so name pills under nodes rarely collide. */
+        let cols = count <= 1 ? 1 : Math.min(2, Math.max(1, Math.floor(bodyW / 60)));
+        if (count <= 2) cols = Math.min(cols, count);
         let rows = Math.ceil(count / cols);
         const cellW = bodyW / cols;
         const cellH = bodyH / rows;
@@ -2535,17 +2627,21 @@
           const col = f % cols;
           const row = Math.floor(f / cols);
           let hx = bodyLeft + cellW * (col + 0.5);
-          let hy = bodyTop + cellH * (row + 0.5);
+          /* Bias nodes toward the upper half of each cell so labels sit in clear space. */
+          let hy = bodyTop + cellH * (row + 0.32);
           hx = Math.max(bodyLeft + 4, Math.min(bodyRight - 4, hx));
-          hy = Math.max(bodyTop + 4, Math.min(bodyBottom - 4, hy));
+          hy = Math.max(bodyTop + 4, Math.min(bodyBottom - 10, hy));
           node.homeX = hx;
           node.homeY = hy;
           node.x = hx;
           node.y = hy;
           node.vx = 0;
           node.vy = 0;
+          node.labelBudget = cellW > 70 ? 10 : 7;
+          /* Overview: hide per-drug labels in dense boxes (dots + count); zoom keeps names. */
+          node.hideLabel = count > 4;
         }
-        return { cx0: cx0, cy0: cy0 };
+        return { cx0: cx0, cy0: cy0, dense: count > 4, count: count };
       }
 
       /* Zoom: even ring/grid of focus drugs inside the box; dimmed parked outside. */
@@ -2564,10 +2660,10 @@
         const count = memberIds.length;
         if (!count) return { cx0: cx0, cy0: cy0 };
 
-        const minChord = 76;
-        const maxR = Math.min(bodyW * 0.46, bodyH * 0.44);
+        const minChord = 88;
+        const maxR = Math.min(bodyW * 0.48, bodyH * 0.46);
         const needR = minChord / (2 * Math.sin(Math.PI / Math.max(2, count)));
-        const ringR = Math.min(maxR, Math.max(58, needR));
+        const ringR = Math.min(maxR, Math.max(64, needR));
         /* Prefer even circular ring for typical class sizes — clearer than a tight grid. */
         const useRing = count >= 2 && count <= 9 && maxR >= 54 && bodyW >= 140 && bodyH >= 120;
 
@@ -2586,6 +2682,8 @@
             node.y = hy;
             node.vx = 0;
             node.vy = 0;
+            /* Place zoom labels radially outward to avoid bottom-stack collisions. */
+            node.labelRadial = { cx: cx0, cy: cy0, ang: ang };
           }
         } else {
           /* Grid around center, skip center cell so focus drug stays clear. */
@@ -2697,7 +2795,15 @@
           for (let k = 0; k < keys.length; k += 1) {
             const pack = classBoxes[keys[k]];
             if (!pack) continue;
-            assignHomesInBox(membersByClass[keys[k]], pack, { pad: 8 });
+            const home = assignHomesInBox(membersByClass[keys[k]], pack, { pad: 8 });
+            if (home && home.dense) {
+              pack.denseCount = home.count;
+              for (let c = 0; c < classLabelOverlay.length; c += 1) {
+                if (classLabelOverlay[c].classKey === keys[k]) {
+                  classLabelOverlay[c].denseCount = home.count;
+                }
+              }
+            }
           }
         }
       }
@@ -5783,6 +5889,83 @@
       return html;
     }
 
+    /* Restructure stated drug-note text only — no invented clinical content. */
+    function formatDrugNoteHtml(raw) {
+      const lines = String(raw || "").replace(/\r\n/g, "\n").split("\n");
+      let html = "";
+      let listOpen = false;
+      function closeList() {
+        if (listOpen) {
+          html += "</ul>";
+          listOpen = false;
+        }
+      }
+      function openList() {
+        if (!listOpen) {
+          html += '<ul class="note-list">';
+          listOpen = true;
+        }
+      }
+      function stripTicks(s) {
+        return String(s || "").replace(/`/g, "");
+      }
+      function splitPartners(rest) {
+        const parts = String(rest || "").split(",");
+        const out = [];
+        for (let i = 0; i < parts.length; i += 1) {
+          const name = parts[i].replace(/\.$/, "").trim();
+          if (name) out.push(name);
+        }
+        return out;
+      }
+      for (let i = 0; i < lines.length; i += 1) {
+        const line = lines[i].trim();
+        if (!line) {
+          closeList();
+          continue;
+        }
+        if (/^File:\s*/i.test(line)) {
+          closeList();
+          const path = stripTicks(line.replace(/^File:\s*/i, "").trim());
+          html += '<h3 class="note-section">File path</h3>';
+          html += '<p class="note-para note-file-path"><code>' + esc(path) + "</code></p>";
+          continue;
+        }
+        if (/^Citation:\s*/i.test(line)) {
+          closeList();
+          const cite = line.replace(/^Citation:\s*/i, "").trim();
+          html += '<h3 class="note-section">Citation</h3>';
+          html += '<p class="note-para">' + esc(cite) + "</p>";
+          continue;
+        }
+        if (line.charAt(0) === "-" || line.charAt(0) === "•") {
+          const body = line.replace(/^[-•]\s*/, "").trim();
+          const partnersAt = body.search(/\bPartners:\s*/i);
+          if (partnersAt >= 0) {
+            closeList();
+            const head = body.slice(0, partnersAt).replace(/[.]\s*$/, "").trim();
+            const partners = splitPartners(body.slice(partnersAt).replace(/^Partners:\s*/i, ""));
+            html += '<h4 class="note-group">' + esc(stripTicks(head)) + "</h4>";
+            if (partners.length) {
+              openList();
+              for (let p = 0; p < partners.length; p += 1) {
+                html += "<li>" + esc(partners[p]) + "</li>";
+              }
+              closeList();
+            }
+            continue;
+          }
+          openList();
+          html += "<li>" + esc(stripTicks(body)) + "</li>";
+          continue;
+        }
+        closeList();
+        html += '<p class="note-para">' + esc(stripTicks(line)) + "</p>";
+      }
+      closeList();
+      return html;
+    }
+
     function allergenNoteMedia(item) {
       if (!item || typeof item.name !== "string") return null;
       const direct = ALLERGEN_NOTE_MEDIA[item.name];
@@ -5821,7 +6004,7 @@
         if (isAllergenNoteId(state.noteId)) {
           body = pending + '<div class="note-copy note-copy-allergen">' + formatAllergenNoteHtml(item.text) + "</div>";
         } else {
-          body = pending + '<div class="note-copy">' + esc(item.text) + "</div>";
+          body = pending + '<div class="note-copy note-copy-drug">' + formatDrugNoteHtml(item.text) + "</div>";
         }
       } else {
         body = '<p class="pending">Source pending.</p>';
