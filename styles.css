@@ -2329,6 +2329,16 @@ button.card.score-area-card {
   color: var(--quiet, #8e8e93);
   line-height: 1.4;
 }
+.additive-official {
+  margin: 10px 0 0;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+.additive-official a {
+  color: var(--ink, #1c1c1e);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .additive-title {
   margin-bottom: 2px;
 }
@@ -2378,6 +2388,22 @@ button.card.score-area-card {
 .score-calculator {
   margin-top: 12px;
   padding: 14px 16px 16px;
+}
+.score-calc-missing-label {
+  margin: 10px 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--quiet);
+}
+.score-calc-missing {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 13px;
+  color: var(--quiet);
+  line-height: 1.45;
+}
+.score-calc-missing li + li {
+  margin-top: 4px;
 }
 .score-calc-source {
   margin: 0 0 12px;

@@ -1,6 +1,9 @@
 /* Scoring calculators — only instruments whose item stems/points are stated
  * in scoring-tools.json whatItMeasures (or equivalent cited prose in that file).
  * Do not invent stems, points, or bands.
+ *
+ * MAA-89: PENDING_GAPS lists what each citation-only tool still lacks in-repo
+ * before a calculator may ship (stems / options / points / rule / bands).
  */
 (function (global) {
   "use strict";
@@ -94,8 +97,83 @@
     }
   };
 
+  /* Gaps vs scoring-tools.json whatItMeasures — not clinical content. */
+  const PENDING_GAPS = {
+    act: [
+      "Five item stems (wording)",
+      "Per-item response options and point values (typically 1–5)",
+      "Licensed full-instrument citation in repo (abstract alone is not enough)"
+    ],
+    "c-act": [
+      "Seven item stems (child + caregiver wording)",
+      "Per-item response options and point values (sum 0–27 stated, options not)",
+      "Licensed full-instrument citation in repo"
+    ],
+    track: [
+      "Five item stems (caregiver wording)",
+      "Per-item response options and point values",
+      "Control cut-point / band table from the instrument source"
+    ],
+    acq: [
+      "Seven item stems (five symptoms, β2-agonist use, airway calibre)",
+      "7-point response labels for each item",
+      "Whether FEV1 item is included in this preview build"
+    ],
+    aqlq: [
+      "Item stems and domain structure",
+      "Response scale and scoring rule",
+      "Any interpretive bands the source states"
+    ],
+    scorad: [
+      "Exact extent / intensity / subjective scoring formula (weights are approximate in prose)",
+      "Intensity grade descriptors (0–3) per sign",
+      "Subjective symptom scales"
+    ],
+    easi: ["Region × intensity point table", "Area extent bands", "Total score formula"],
+    poem: ["Seven symptom stems", "5-point frequency option labels", "Any severity bands if stated"],
+    "viga-ad": ["Five morphologic grade descriptors", "How the single grade is chosen"],
+    adct: ["Six item stems", "Response options and points", "How total ≥7 maps to items"],
+    uas: ["Wheal-number bands", "Pruritus intensity scale", "Daily → UAS7 aggregation rule"],
+    uct: ["Four item stems", "Response options and points", "Control cut-off (excluded from source sheet)"],
+    "cu-q2ol": ["23 item stems", "Five-step Likert labels", "Domain scoring rule"],
+    aas: ["Five item stems", "Response options and points"],
+    aect: ["Four item stems", "Response options and points", "4-week vs 3-month form choice"],
+    "ae-qol": ["17 item stems", "Domain scoring rule"],
+    csms: ["Symptom and medication component formulas", "Equal-weight combination rule details"],
+    rqlq: ["28 item stems", "Domain scoring rule"],
+    carat10: ["10 item stems", "Response options and points"],
+    rcat: [
+      "Six item stems (domains only named in prose: congestion, sneezing, watery eyes, sleep, activity, control)",
+      "Response options and points",
+      "Control cut-point if stated"
+    ],
+    "snot-22": ["22 item stems", "0–5 (or stated) response scale", "MID is stated (8.9); item table is not"],
+    "wao-scit-grading": ["Grade definitions and criteria table"],
+    "acute-reaction-grading": ["Continuum grade definitions from the Delphi instrument"],
+    fass: ["oFASS 3/5 grade criteria", "nFASS numerical mapping"],
+    alden: ["Algorithm criteria and category thresholds"],
+    "regiscar-dress": ["RegiSCAR validation score items and probable/definite cut-points"],
+    naranjo: ["Questionnaire items and Yes/No/Do not know points (explicitly deferred to full paper)"],
+    rema: ["Score components and cut-points for bone-marrow selection"],
+    "eoe-endoscopy": ["EREFS feature grade definitions and total score rule"],
+    "eoe-histology": [
+      "Per-feature 0–3 severity and extent descriptors (eight features named; scale stated)",
+      "How grade and stage totals are computed for clinical use"
+    ],
+    eesai: ["Seven item stems", "Response options and points"]
+  };
+
   function get(id) {
     return CALCULATORS[id] || null;
+  }
+
+  function pendingGaps(id) {
+    if (CALCULATORS[id]) return null;
+    return PENDING_GAPS[id] || [
+      "Item stems",
+      "Response options / point values",
+      "Scoring rule and any bands cited from the full instrument"
+    ];
   }
 
   function itemPoints(item, answer) {
@@ -172,6 +250,7 @@
   global.SCORE_CALCULATORS = {
     get: get,
     compute: compute,
+    pendingGaps: pendingGaps,
     ids: Object.keys(CALCULATORS)
   };
 })(typeof window !== "undefined" ? window : globalThis);

@@ -1,12 +1,17 @@
 /* Drug additives lookup — ported from lekis1020/drug_additives.
  * Search index: additives/drugs.json (name, company, code only).
- * Detail: MFDS HTML via /api/mfds-detail (same endpoint as NetworkManager.swift).
+ * Detail: MFDS HTML via local /api/mfds-detail (serve-preview.py) or the
+ * CORS-safe Cloudflare Worker used on static GitHub Pages.
  * Do not invent additives or ingredients.
  */
 (function (global) {
   "use strict";
 
   const PAGE_SIZE = 20;
+  /* Static-host detail proxy (Workers). Same MFDS HTML as NetworkManager.swift. */
+  const MFDS_PAGES_PROXY = "https://allergy-mfds-detail.lekis1020.workers.dev/";
+  const MFDS_ITEM_URL =
+    "https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetailCache?cacheSeq=";
   let drugs = null;
   let loadPromise = null;
   let cachedQuery = "";
@@ -118,21 +123,67 @@
     };
   }
 
+  function officialMfdsUrl(code) {
+    const safe = String(code || "").trim();
+    if (!/^[0-9A-Za-z]+$/.test(safe)) return "";
+    return MFDS_ITEM_URL + encodeURIComponent(safe);
+  }
+
+  function detailEndpoints(code) {
+    const q = "code=" + encodeURIComponent(code);
+    const urls = [];
+    /* Local preview proxy (serve-preview.py on :4173). */
+    urls.push("/api/mfds-detail?" + q);
+    /* Relative path under GitHub Pages project root (usually absent). */
+    try {
+      if (typeof document !== "undefined" && document.baseURI) {
+        urls.push(new URL("api/mfds-detail?" + q, document.baseURI).href);
+      }
+    } catch (_err) {
+      /* ignore bad baseURI */
+    }
+    /* CORS-safe Workers proxy for static Pages deploy. */
+    urls.push(MFDS_PAGES_PROXY + "?" + q);
+    return urls;
+  }
+
+  function fetchJsonDetail(url) {
+    return fetch(url).then((r) => {
+      const ct = String(r.headers.get("content-type") || "").toLowerCase();
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      if (ct.indexOf("application/json") === -1) {
+        throw new Error("Non-JSON detail response");
+      }
+      return r.json();
+    });
+  }
+
   function fetchDetail(code) {
     const safe = String(code || "").trim();
     if (!/^[0-9A-Za-z]+$/.test(safe)) {
       return Promise.reject(new Error("Invalid code"));
     }
-    return fetch("/api/mfds-detail?code=" + encodeURIComponent(safe))
-      .then((r) => r.json())
-      .then((payload) => {
-        if (!payload || !payload.ok || !payload.html) {
-          throw new Error((payload && payload.error) || "MFDS fetch failed");
-        }
-        const detail = parseMfdsHtml(payload.html);
-        if (!detail) throw new Error("Could not parse MFDS detail");
-        return detail;
-      });
+    const endpoints = detailEndpoints(safe);
+    let idx = 0;
+    function tryNext() {
+      if (idx >= endpoints.length) {
+        return Promise.reject(new Error("MFDS detail unavailable"));
+      }
+      const url = endpoints[idx];
+      idx += 1;
+      return fetchJsonDetail(url)
+        .then((payload) => {
+          if (!payload || !payload.ok || !payload.html) {
+            throw new Error((payload && payload.error) || "MFDS fetch failed");
+          }
+          const detail = parseMfdsHtml(payload.html);
+          if (!detail) throw new Error("Could not parse MFDS detail");
+          detail.officialUrl = officialMfdsUrl(safe);
+          return detail;
+        })
+        .catch(() => tryNext());
+    }
+    return tryNext();
   }
 
   global.ADDITIVES = {
@@ -142,6 +193,8 @@
     hasMore: hasMore,
     fetchDetail: fetchDetail,
     parseMfdsHtml: parseMfdsHtml,
+    officialMfdsUrl: officialMfdsUrl,
+    mfdsPagesProxy: MFDS_PAGES_PROXY,
     sourceNotice:
       "본 정보는 식품의약품안전처가 공공데이터포털을 통해 제공하는 정보를 바탕으로 합니다. (https://www.data.go.kr/data/15095677/openapi.do)"
   };

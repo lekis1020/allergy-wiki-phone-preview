@@ -4880,9 +4880,21 @@
         ? SCORE_CALCULATORS.get(tool.id)
         : null;
       if (!calc) {
+        const gaps = (typeof SCORE_CALCULATORS !== "undefined" && SCORE_CALCULATORS.pendingGaps)
+          ? SCORE_CALCULATORS.pendingGaps(tool.id)
+          : null;
+        let gapHtml = "";
+        if (Array.isArray(gaps) && gaps.length) {
+          gapHtml = '<p class="score-calc-missing-label">Still needed in repo before a calculator can ship:</p><ul class="score-calc-missing">';
+          for (let g = 0; g < gaps.length; g += 1) {
+            gapHtml += "<li>" + esc(gaps[g]) + "</li>";
+          }
+          gapHtml += "</ul>";
+        }
         return '<section class="card score-calculator">' +
           '<h3 class="score-detail-heading">Calculator</h3>' +
           '<p class="pending">Source pending. Item stems and point scales are not cited from the full instrument in this preview.</p>' +
+          gapHtml +
           "</section>";
       }
       const answers = scoreAnswersFor(tool.id);
@@ -5870,8 +5882,15 @@
       if (state.additiveDetailStatus === "loading") {
         body = '<p class="search-prompt">정보를 가져오는 중…</p>';
       } else if (state.additiveDetailStatus === "error") {
+        const mfdsUrl = (typeof ADDITIVES !== "undefined" && ADDITIVES.officialMfdsUrl)
+          ? ADDITIVES.officialMfdsUrl(item.code)
+          : "";
         body = '<p class="search-prompt">Source pending / MFDS detail unavailable' +
           (state.additiveLoadError ? ": " + esc(state.additiveLoadError) : "") + "</p>";
+        if (mfdsUrl) {
+          body += '<p class="additive-official"><a href="' + esc(mfdsUrl) +
+            '" target="_blank" rel="noopener noreferrer">MFDS 공식 품목 상세 열기</a></p>';
+        }
       } else if (state.additiveDetail) {
         const d = state.additiveDetail;
         body = '<section class="card additive-detail">' +
