@@ -1,0 +1,922 @@
+[
+  {
+    "id": "scorad",
+    "area": "Atopic dermatitis",
+    "name": "SCORAD",
+    "appliesTo": "Atopic dermatitis",
+    "scenario": "Atopic dermatitis · SCORAD index",
+    "whatItMeasures": "Composite severity index combining extent, intensity and subjective symptoms. Intensity items (erythema, edema/papulation, oozing/crusts, excoriations, lichenification) carry about 60% of the score; extent and subjective symptoms about 20% each.",
+    "pmids": [
+      "8435513"
+    ],
+    "citations": [
+      {
+        "pmid": "8435513",
+        "citation": "Severity scoring of atopic dermatitis: the SCORAD index. Consensus Report of the European Task Force on Atopic Dermatitis. Dermatology. 1993;186(1):23-31. doi:10.1159/000247298",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/8435513/",
+        "year": 1993,
+        "doi": "10.1159/000247298"
+      }
+    ],
+    "citation": "Severity scoring of atopic dermatitis: the SCORAD index. Consensus Report of the European Task Force on Atopic Dermatitis. Dermatology. 1993;186(1):23-31. doi:10.1159/000247298",
+    "year": 1993,
+    "doi": "10.1159/000247298",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/8435513/"
+  },
+  {
+    "id": "easi",
+    "area": "Atopic dermatitis",
+    "name": "EASI",
+    "appliesTo": "Atopic dermatitis",
+    "scenario": "Atopic dermatitis · Eczema Area and Severity Index (EASI)",
+    "whatItMeasures": "Clinician-scored measure of the severity and extent of atopic dermatitis. Trained dermatologist evaluators learned it quickly and used it reliably in adults and children.",
+    "pmids": [
+      "11168575"
+    ],
+    "citations": [
+      {
+        "pmid": "11168575",
+        "citation": "Hanifin JM, Thurston M, Omoto M, et al. The eczema area and severity index (EASI): assessment of reliability in atopic dermatitis. EASI Evaluator Group. Exp Dermatol. 2001;10(1):11-8. doi:10.1034/j.1600-0625.2001.100102.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/11168575/",
+        "year": 2001,
+        "doi": "10.1034/j.1600-0625.2001.100102.x",
+        "authors": "Hanifin JM, Thurston M, Omoto M, et al"
+      }
+    ],
+    "citation": "Hanifin JM, Thurston M, Omoto M, et al. The eczema area and severity index (EASI): assessment of reliability in atopic dermatitis. EASI Evaluator Group. Exp Dermatol. 2001;10(1):11-8. doi:10.1034/j.1600-0625.2001.100102.x",
+    "year": 2001,
+    "doi": "10.1034/j.1600-0625.2001.100102.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/11168575/",
+    "authors": "Hanifin JM, Thurston M, Omoto M, et al"
+  },
+  {
+    "id": "poem",
+    "area": "Atopic dermatitis",
+    "name": "POEM",
+    "appliesTo": "Atopic dermatitis",
+    "scenario": "Atopic dermatitis · Patient-Oriented Eczema Measure (POEM)",
+    "whatItMeasures": "Patient-reported measure of eczema activity in children and adults: seven symptoms scored on a 5-point frequency scale for the previous week, maximum total score 28.",
+    "pmids": [
+      "15611432"
+    ],
+    "citations": [
+      {
+        "pmid": "15611432",
+        "citation": "Charman CR, Venn AJ, Williams HC. The patient-oriented eczema measure: development and initial validation of a new tool for measuring atopic eczema severity from the patients' perspective. Arch Dermatol. 2004;140(12):1513-9. doi:10.1001/archderm.140.12.1513",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/15611432/",
+        "year": 2004,
+        "doi": "10.1001/archderm.140.12.1513",
+        "authors": "Charman CR, Venn AJ, Williams HC"
+      }
+    ],
+    "citation": "Charman CR, Venn AJ, Williams HC. The patient-oriented eczema measure: development and initial validation of a new tool for measuring atopic eczema severity from the patients' perspective. Arch Dermatol. 2004;140(12):1513-9. doi:10.1001/archderm.140.12.1513",
+    "year": 2004,
+    "doi": "10.1001/archderm.140.12.1513",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/15611432/",
+    "authors": "Charman CR, Venn AJ, Williams HC"
+  },
+  {
+    "id": "viga-ad",
+    "area": "Atopic dermatitis",
+    "name": "vIGA-AD",
+    "appliesTo": "Atopic dermatitis",
+    "scenario": "Atopic dermatitis · Validated Investigator Global Assessment (vIGA-AD)",
+    "whatItMeasures": "Five-point investigator global severity scale with morphologic descriptions, developed with a training module and certification examination to harmonize severity assessment in atopic dermatitis trials.",
+    "pmids": [
+      "32344071"
+    ],
+    "citations": [
+      {
+        "pmid": "32344071",
+        "citation": "Simpson E, Bissonnette R, Eichenfield LF, et al. The Validated Investigator Global Assessment for Atopic Dermatitis (vIGA-AD): The development and reliability testing of a novel clinical outcome measurement instrument for the severity of atopic dermatitis. J Am Acad Dermatol. 2020;83(3):839-846. doi:10.1016/j.jaad.2020.04.104",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/32344071/",
+        "year": 2020,
+        "doi": "10.1016/j.jaad.2020.04.104",
+        "authors": "Simpson E, Bissonnette R, Eichenfield LF, et al"
+      }
+    ],
+    "citation": "Simpson E, Bissonnette R, Eichenfield LF, et al. The Validated Investigator Global Assessment for Atopic Dermatitis (vIGA-AD): The development and reliability testing of a novel clinical outcome measurement instrument for the severity of atopic dermatitis. J Am Acad Dermatol. 2020;83(3):839-846. doi:10.1016/j.jaad.2020.04.104",
+    "year": 2020,
+    "doi": "10.1016/j.jaad.2020.04.104",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32344071/",
+    "authors": "Simpson E, Bissonnette R, Eichenfield LF, et al"
+  },
+  {
+    "id": "adct",
+    "area": "Atopic dermatitis",
+    "name": "ADCT",
+    "appliesTo": "Atopic dermatitis",
+    "scenario": "Atopic dermatitis · Atopic Dermatitis Control Tool (ADCT)",
+    "whatItMeasures": "Six-item patient-reported measure of atopic dermatitis control with a 7-day recall, developed in adults. A total score of 7 or more identified disease that is not in control.",
+    "pmids": [
+      "31778083"
+    ],
+    "citations": [
+      {
+        "pmid": "31778083",
+        "citation": "Pariser DM, Simpson EL, Gadkari A, et al. Evaluating patient-perceived control of atopic dermatitis: design, validation, and scoring of the Atopic Dermatitis Control Tool (ADCT). Curr Med Res Opin. 2020;36(3):367-376. doi:10.1080/03007995.2019.1699516",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/31778083/",
+        "year": 2020,
+        "doi": "10.1080/03007995.2019.1699516",
+        "authors": "Pariser DM, Simpson EL, Gadkari A, et al"
+      }
+    ],
+    "citation": "Pariser DM, Simpson EL, Gadkari A, et al. Evaluating patient-perceived control of atopic dermatitis: design, validation, and scoring of the Atopic Dermatitis Control Tool (ADCT). Curr Med Res Opin. 2020;36(3):367-376. doi:10.1080/03007995.2019.1699516",
+    "year": 2020,
+    "doi": "10.1080/03007995.2019.1699516",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31778083/",
+    "authors": "Pariser DM, Simpson EL, Gadkari A, et al"
+  },
+  {
+    "id": "uas",
+    "area": "Urticaria and angioedema",
+    "name": "UAS",
+    "appliesTo": "Chronic urticaria",
+    "scenario": "Chronic urticaria · Urticaria Activity Score (UAS)",
+    "whatItMeasures": "Activity score combining daily wheal number and pruritus intensity. The authors advise using mean values from at least four consecutive days.",
+    "pmids": [
+      "18445192"
+    ],
+    "citations": [
+      {
+        "pmid": "18445192",
+        "citation": "Młynek A, Zalewska-Janowska A, Martus P, et al. How to assess disease activity in patients with chronic urticaria? Allergy. 2008;63(6):777-80. doi:10.1111/j.1398-9995.2008.01726.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/18445192/",
+        "year": 2008,
+        "doi": "10.1111/j.1398-9995.2008.01726.x"
+      }
+    ],
+    "citation": "Młynek A, Zalewska-Janowska A, Martus P, et al. How to assess disease activity in patients with chronic urticaria? Allergy. 2008;63(6):777-80. doi:10.1111/j.1398-9995.2008.01726.x",
+    "year": 2008,
+    "doi": "10.1111/j.1398-9995.2008.01726.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/18445192/"
+  },
+  {
+    "id": "uct",
+    "area": "Urticaria and angioedema",
+    "name": "UCT",
+    "appliesTo": "Chronic urticaria",
+    "scenario": "Chronic urticaria · Urticaria Control Test (UCT)",
+    "whatItMeasures": "Four-item patient-reported measure of urticaria control over the previous 4 weeks, for chronic spontaneous and inducible urticaria.",
+    "pmids": [
+      "24522090"
+    ],
+    "citations": [
+      {
+        "pmid": "24522090",
+        "citation": "Weller K, Groffik A, Church MK, et al. Development and validation of the Urticaria Control Test: a patient-reported outcome instrument for assessing urticaria control. J Allergy Clin Immunol. 2014;133(5):1365-72, 1372.e1-6. doi:10.1016/j.jaci.2013.12.1076",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/24522090/",
+        "year": 2014,
+        "doi": "10.1016/j.jaci.2013.12.1076",
+        "authors": "Weller K, Groffik A, Church MK, et al"
+      }
+    ],
+    "citation": "Weller K, Groffik A, Church MK, et al. Development and validation of the Urticaria Control Test: a patient-reported outcome instrument for assessing urticaria control. J Allergy Clin Immunol. 2014;133(5):1365-72, 1372.e1-6. doi:10.1016/j.jaci.2013.12.1076",
+    "year": 2014,
+    "doi": "10.1016/j.jaci.2013.12.1076",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24522090/",
+    "authors": "Weller K, Groffik A, Church MK, et al"
+  },
+  {
+    "id": "cu-q2ol",
+    "area": "Urticaria and angioedema",
+    "name": "CU-Q2oL",
+    "appliesTo": "Chronic urticaria",
+    "scenario": "Chronic urticaria · Chronic Urticaria Quality of Life Questionnaire (CU-Q2oL)",
+    "whatItMeasures": "23-item quality-of-life questionnaire answered on a five-step Likert scale, with six dimensions: pruritus, swelling, impact on life activities, sleep problems, looks and limits.",
+    "pmids": [
+      "15969690"
+    ],
+    "citations": [
+      {
+        "pmid": "15969690",
+        "citation": "Baiardini I, Pasquali M, Braido F, et al. A new tool to evaluate the impact of chronic urticaria on quality of life: chronic urticaria quality of life questionnaire (CU-QoL). Allergy. 2005;60(8):1073-8. doi:10.1111/j.1398-9995.2005.00833.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/15969690/",
+        "year": 2005,
+        "doi": "10.1111/j.1398-9995.2005.00833.x",
+        "authors": "Baiardini I, Pasquali M, Braido F, et al"
+      }
+    ],
+    "citation": "Baiardini I, Pasquali M, Braido F, et al. A new tool to evaluate the impact of chronic urticaria on quality of life: chronic urticaria quality of life questionnaire (CU-QoL). Allergy. 2005;60(8):1073-8. doi:10.1111/j.1398-9995.2005.00833.x",
+    "year": 2005,
+    "doi": "10.1111/j.1398-9995.2005.00833.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/15969690/",
+    "authors": "Baiardini I, Pasquali M, Braido F, et al"
+  },
+  {
+    "id": "aas",
+    "area": "Urticaria and angioedema",
+    "name": "AAS",
+    "appliesTo": "Recurrent angioedema",
+    "scenario": "Recurrent angioedema · Angioedema Activity Score (AAS)",
+    "whatItMeasures": "Five-item patient-reported measure of disease activity in recurrent angioedema.",
+    "pmids": [
+      "23919330"
+    ],
+    "citations": [
+      {
+        "pmid": "23919330",
+        "citation": "Weller K, Groffik A, Magerl M, et al. Development, validation, and initial results of the Angioedema Activity Score. Allergy. 2013;68(9):1185-92. doi:10.1111/all.12209",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/23919330/",
+        "year": 2013,
+        "doi": "10.1111/all.12209",
+        "authors": "Weller K, Groffik A, Magerl M, et al"
+      }
+    ],
+    "citation": "Weller K, Groffik A, Magerl M, et al. Development, validation, and initial results of the Angioedema Activity Score. Allergy. 2013;68(9):1185-92. doi:10.1111/all.12209",
+    "year": 2013,
+    "doi": "10.1111/all.12209",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/23919330/",
+    "authors": "Weller K, Groffik A, Magerl M, et al"
+  },
+  {
+    "id": "aect",
+    "area": "Urticaria and angioedema",
+    "name": "AECT",
+    "appliesTo": "Recurrent angioedema",
+    "scenario": "Recurrent angioedema · Angioedema Control Test (AECT)",
+    "whatItMeasures": "Four-item patient-reported measure of disease control in recurrent angioedema, mast cell mediator-induced or bradykinin-mediated, with 4-week and 3-month recall versions.",
+    "pmids": [
+      "31815297"
+    ],
+    "citations": [
+      {
+        "pmid": "31815297",
+        "citation": "Weller K, Donoso T, Magerl M, et al. Development of the Angioedema Control Test-A patient-reported outcome measure that assesses disease control in patients with recurrent angioedema. Allergy. 2020;75(5):1165-1177. doi:10.1111/all.14144",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/31815297/",
+        "year": 2020,
+        "doi": "10.1111/all.14144",
+        "authors": "Weller K, Donoso T, Magerl M, et al"
+      }
+    ],
+    "citation": "Weller K, Donoso T, Magerl M, et al. Development of the Angioedema Control Test-A patient-reported outcome measure that assesses disease control in patients with recurrent angioedema. Allergy. 2020;75(5):1165-1177. doi:10.1111/all.14144",
+    "year": 2020,
+    "doi": "10.1111/all.14144",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/31815297/",
+    "authors": "Weller K, Donoso T, Magerl M, et al"
+  },
+  {
+    "id": "ae-qol",
+    "area": "Urticaria and angioedema",
+    "name": "AE-QoL",
+    "appliesTo": "Recurrent angioedema",
+    "scenario": "Recurrent angioedema · Angioedema Quality of Life Questionnaire (AE-QoL)",
+    "whatItMeasures": "17-item quality-of-life questionnaire for recurrent angioedema with four domains: functioning, fatigue/mood, fears/shame and food.",
+    "pmids": [
+      "22913638"
+    ],
+    "citations": [
+      {
+        "pmid": "22913638",
+        "citation": "Weller K, Groffik A, Magerl M, et al. Development and construct validation of the angioedema quality of life questionnaire. Allergy. 2012;67(10):1289-98. doi:10.1111/all.12007",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/22913638/",
+        "year": 2012,
+        "doi": "10.1111/all.12007",
+        "authors": "Weller K, Groffik A, Magerl M, et al"
+      }
+    ],
+    "citation": "Weller K, Groffik A, Magerl M, et al. Development and construct validation of the angioedema quality of life questionnaire. Allergy. 2012;67(10):1289-98. doi:10.1111/all.12007",
+    "year": 2012,
+    "doi": "10.1111/all.12007",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/22913638/",
+    "authors": "Weller K, Groffik A, Magerl M, et al"
+  },
+  {
+    "id": "act",
+    "area": "Asthma",
+    "name": "ACT",
+    "appliesTo": "Asthma",
+    "scenario": "Asthma · Asthma Control Test (ACT)",
+    "whatItMeasures": "Five-item patient-based tool for identifying poorly controlled asthma. In a validation study, a score of 19 or less identified poorly controlled asthma (sensitivity and specificity 71%).",
+    "pmids": [
+      "14713908",
+      "16522452"
+    ],
+    "citations": [
+      {
+        "pmid": "14713908",
+        "citation": "Nathan RA, Sorkness CA, Kosinski M, et al. Development of the asthma control test: a survey for assessing asthma control. J Allergy Clin Immunol. 2004;113(1):59-65. doi:10.1016/j.jaci.2003.09.008",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/14713908/",
+        "year": 2004,
+        "doi": "10.1016/j.jaci.2003.09.008",
+        "authors": "Nathan RA, Sorkness CA, Kosinski M, et al"
+      },
+      {
+        "pmid": "16522452",
+        "citation": "Schatz M, Sorkness CA, Li JT, et al. Asthma Control Test: reliability, validity, and responsiveness in patients not previously followed by asthma specialists. J Allergy Clin Immunol. 2006;117(3):549-56. doi:10.1016/j.jaci.2006.01.011",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/16522452/",
+        "year": 2006,
+        "doi": "10.1016/j.jaci.2006.01.011",
+        "authors": "Schatz M, Sorkness CA, Li JT, et al"
+      }
+    ],
+    "citation": "Nathan RA, Sorkness CA, Kosinski M, et al. Development of the asthma control test: a survey for assessing asthma control. J Allergy Clin Immunol. 2004;113(1):59-65. doi:10.1016/j.jaci.2003.09.008",
+    "year": 2004,
+    "doi": "10.1016/j.jaci.2003.09.008",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/14713908/",
+    "authors": "Nathan RA, Sorkness CA, Kosinski M, et al"
+  },
+  {
+    "id": "c-act",
+    "area": "Asthma",
+    "name": "C-ACT",
+    "appliesTo": "Asthma, children 4-11 years",
+    "scenario": "Asthma, children 4-11 years · Childhood Asthma Control Test (C-ACT)",
+    "whatItMeasures": "Seven-item tool with input from the child and caregiver. Item scores sum to 0-27, lower meaning poorer control. A score of 19 indicated inadequately controlled asthma (specificity 74%, sensitivity 68%).",
+    "pmids": [
+      "17353040"
+    ],
+    "citations": [
+      {
+        "pmid": "17353040",
+        "citation": "Liu AH, Zeiger R, Sorkness C, et al. Development and cross-sectional validation of the Childhood Asthma Control Test. J Allergy Clin Immunol. 2007;119(4):817-25. doi:10.1016/j.jaci.2006.12.662",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/17353040/",
+        "year": 2007,
+        "doi": "10.1016/j.jaci.2006.12.662",
+        "authors": "Liu AH, Zeiger R, Sorkness C, et al"
+      }
+    ],
+    "citation": "Liu AH, Zeiger R, Sorkness C, et al. Development and cross-sectional validation of the Childhood Asthma Control Test. J Allergy Clin Immunol. 2007;119(4):817-25. doi:10.1016/j.jaci.2006.12.662",
+    "year": 2007,
+    "doi": "10.1016/j.jaci.2006.12.662",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17353040/",
+    "authors": "Liu AH, Zeiger R, Sorkness C, et al"
+  },
+  {
+    "id": "track",
+    "area": "Asthma",
+    "name": "TRACK",
+    "appliesTo": "Respiratory symptoms, children under 5 years",
+    "scenario": "Respiratory symptoms, children under 5 years · Test for Respiratory and Asthma Control in Kids (TRACK)",
+    "whatItMeasures": "Five-item caregiver-completed questionnaire of respiratory control in preschool children with symptoms consistent with asthma. Covers symptoms, activity limitation and night waking over 4 weeks, rescue medication over 3 months, and oral corticosteroid use in the previous year.",
+    "pmids": [
+      "19348922"
+    ],
+    "citations": [
+      {
+        "pmid": "19348922",
+        "citation": "Murphy KR, Zeiger RS, Kosinski M, et al. Test for respiratory and asthma control in kids (TRACK): a caregiver-completed questionnaire for preschool-aged children. J Allergy Clin Immunol. 2009;123(4):833-9.e9. doi:10.1016/j.jaci.2009.01.058",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/19348922/",
+        "year": 2009,
+        "doi": "10.1016/j.jaci.2009.01.058",
+        "authors": "Murphy KR, Zeiger RS, Kosinski M, et al"
+      }
+    ],
+    "citation": "Murphy KR, Zeiger RS, Kosinski M, et al. Test for respiratory and asthma control in kids (TRACK): a caregiver-completed questionnaire for preschool-aged children. J Allergy Clin Immunol. 2009;123(4):833-9.e9. doi:10.1016/j.jaci.2009.01.058",
+    "year": 2009,
+    "doi": "10.1016/j.jaci.2009.01.058",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/19348922/",
+    "authors": "Murphy KR, Zeiger RS, Kosinski M, et al"
+  },
+  {
+    "id": "acq",
+    "area": "Asthma",
+    "name": "ACQ",
+    "appliesTo": "Asthma",
+    "scenario": "Asthma · Asthma Control Questionnaire (ACQ)",
+    "whatItMeasures": "Seven questions: five symptoms, β2-agonist use and airway calibre. The score is the mean of 7-point responses (0 totally controlled, 6 severely uncontrolled). A cut-point of 0.75 gives confidence that asthma is well controlled; 1.50 that it is inadequately controlled.",
+    "pmids": [
+      "10573240",
+      "16226443"
+    ],
+    "citations": [
+      {
+        "pmid": "10573240",
+        "citation": "Juniper EF, O'Byrne PM, Guyatt GH, et al. Development and validation of a questionnaire to measure asthma control. Eur Respir J. 1999;14(4):902-7. doi:10.1034/j.1399-3003.1999.14d29.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/10573240/",
+        "year": 1999,
+        "doi": "10.1034/j.1399-3003.1999.14d29.x",
+        "authors": "Juniper EF, O'Byrne PM, Guyatt GH, et al"
+      },
+      {
+        "pmid": "16226443",
+        "citation": "Juniper EF, Bousquet J, Abetz L, et al. Identifying 'well-controlled' and 'not well-controlled' asthma using the Asthma Control Questionnaire. Respir Med. 2006;100(4):616-21. doi:10.1016/j.rmed.2005.08.012",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/16226443/",
+        "year": 2006,
+        "doi": "10.1016/j.rmed.2005.08.012",
+        "authors": "Juniper EF, Bousquet J, Abetz L, et al"
+      }
+    ],
+    "citation": "Juniper EF, O'Byrne PM, Guyatt GH, et al. Development and validation of a questionnaire to measure asthma control. Eur Respir J. 1999;14(4):902-7. doi:10.1034/j.1399-3003.1999.14d29.x",
+    "year": 1999,
+    "doi": "10.1034/j.1399-3003.1999.14d29.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/10573240/",
+    "authors": "Juniper EF, O'Byrne PM, Guyatt GH, et al"
+  },
+  {
+    "id": "aqlq",
+    "area": "Asthma",
+    "name": "AQLQ",
+    "appliesTo": "Asthma",
+    "scenario": "Asthma · Asthma Quality of Life Questionnaire (AQLQ)",
+    "whatItMeasures": "Asthma-specific quality-of-life questionnaire, validated in adults as both an evaluative and a discriminative instrument.",
+    "pmids": [
+      "8466117"
+    ],
+    "citations": [
+      {
+        "pmid": "8466117",
+        "citation": "Juniper EF, Guyatt GH, Ferrie PJ, et al. Measuring quality of life in asthma. Am Rev Respir Dis. 1993;147(4):832-8. doi:10.1164/ajrccm/147.4.832",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/8466117/",
+        "year": 1993,
+        "doi": "10.1164/ajrccm/147.4.832",
+        "authors": "Juniper EF, Guyatt GH, Ferrie PJ, et al"
+      }
+    ],
+    "citation": "Juniper EF, Guyatt GH, Ferrie PJ, et al. Measuring quality of life in asthma. Am Rev Respir Dis. 1993;147(4):832-8. doi:10.1164/ajrccm/147.4.832",
+    "year": 1993,
+    "doi": "10.1164/ajrccm/147.4.832",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/8466117/",
+    "authors": "Juniper EF, Guyatt GH, Ferrie PJ, et al"
+  },
+  {
+    "id": "csms",
+    "area": "Rhinitis and rhinosinusitis",
+    "name": "CSMS",
+    "appliesTo": "Allergic rhinoconjunctivitis",
+    "scenario": "Allergic rhinoconjunctivitis · Combined symptom and medication score (CSMS)",
+    "whatItMeasures": "Score that weights symptoms and antiallergic medication use equally. An EAACI task force recommends it as the primary endpoint for allergen immunotherapy trials in allergic rhinoconjunctivitis.",
+    "pmids": [
+      "24761804"
+    ],
+    "citations": [
+      {
+        "pmid": "24761804",
+        "citation": "Pfaar O, Demoly P, Gerth van Wijk R, et al. Recommendations for the standardization of clinical outcomes used in allergen immunotherapy trials for allergic rhinoconjunctivitis: an EAACI Position Paper. Allergy. 2014;69(7):854-67. doi:10.1111/all.12383",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/24761804/",
+        "year": 2014,
+        "doi": "10.1111/all.12383"
+      }
+    ],
+    "citation": "Pfaar O, Demoly P, Gerth van Wijk R, et al. Recommendations for the standardization of clinical outcomes used in allergen immunotherapy trials for allergic rhinoconjunctivitis: an EAACI Position Paper. Allergy. 2014;69(7):854-67. doi:10.1111/all.12383",
+    "year": 2014,
+    "doi": "10.1111/all.12383",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/24761804/"
+  },
+  {
+    "id": "rqlq",
+    "area": "Rhinitis and rhinosinusitis",
+    "name": "RQLQ",
+    "appliesTo": "Rhinoconjunctivitis",
+    "scenario": "Rhinoconjunctivitis · Rhinoconjunctivitis Quality of Life Questionnaire (RQLQ)",
+    "whatItMeasures": "28-question quality-of-life questionnaire covering local symptoms plus systemic symptoms, sleep disturbance, practical problems, activity limitation and emotional problems.",
+    "pmids": [
+      "2021881"
+    ],
+    "citations": [
+      {
+        "pmid": "2021881",
+        "citation": "Juniper EF, Guyatt GH. Development and testing of a new measure of health status for clinical trials in rhinoconjunctivitis. Clin Exp Allergy. 1991;21(1):77-83. doi:10.1111/j.1365-2222.1991.tb00807.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/2021881/",
+        "year": 1991,
+        "doi": "10.1111/j.1365-2222.1991.tb00807.x",
+        "authors": "Juniper EF, Guyatt GH"
+      }
+    ],
+    "citation": "Juniper EF, Guyatt GH. Development and testing of a new measure of health status for clinical trials in rhinoconjunctivitis. Clin Exp Allergy. 1991;21(1):77-83. doi:10.1111/j.1365-2222.1991.tb00807.x",
+    "year": 1991,
+    "doi": "10.1111/j.1365-2222.1991.tb00807.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/2021881/",
+    "authors": "Juniper EF, Guyatt GH"
+  },
+  {
+    "id": "carat10",
+    "area": "Rhinitis and rhinosinusitis",
+    "name": "CARAT10",
+    "appliesTo": "Allergic rhinitis with asthma",
+    "scenario": "Allergic rhinitis with asthma · Control of Allergic Rhinitis and Asthma Test (CARAT10)",
+    "whatItMeasures": "10-question test of allergic rhinitis and asthma control together, built for the concurrent management that ARIA recommends.",
+    "pmids": [
+      "20121755"
+    ],
+    "citations": [
+      {
+        "pmid": "20121755",
+        "citation": "Fonseca JA, Nogueira-Silva L, Morais-Almeida M, et al. Validation of a questionnaire (CARAT10) to assess rhinitis and asthma in patients with asthma. Allergy. 2010;65(8):1042-8. doi:10.1111/j.1398-9995.2009.02310.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/20121755/",
+        "year": 2010,
+        "doi": "10.1111/j.1398-9995.2009.02310.x",
+        "authors": "Fonseca JA, Nogueira-Silva L, Morais-Almeida M, et al"
+      }
+    ],
+    "citation": "Fonseca JA, Nogueira-Silva L, Morais-Almeida M, et al. Validation of a questionnaire (CARAT10) to assess rhinitis and asthma in patients with asthma. Allergy. 2010;65(8):1042-8. doi:10.1111/j.1398-9995.2009.02310.x",
+    "year": 2010,
+    "doi": "10.1111/j.1398-9995.2009.02310.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20121755/",
+    "authors": "Fonseca JA, Nogueira-Silva L, Morais-Almeida M, et al"
+  },
+  {
+    "id": "rhinitis-vas",
+    "area": "Rhinitis and rhinosinusitis",
+    "name": "VAS",
+    "appliesTo": "Allergic rhinitis",
+    "scenario": "Allergic rhinitis · Visual analogue scale (VAS) for global symptoms",
+    "whatItMeasures": "Visual analogue scale for global rhinitis symptoms. Under 5 cm classified rhinitis as mild and over 6 cm as moderate/severe by ARIA grading.",
+    "pmids": [
+      "17362246"
+    ],
+    "citations": [
+      {
+        "pmid": "17362246",
+        "citation": "Bousquet PJ, Combescure C, Neukirch F, et al. Visual analog scales can assess the severity of rhinitis graded according to ARIA guidelines. Allergy. 2007;62(4):367-72. doi:10.1111/j.1398-9995.2006.01276.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/17362246/",
+        "year": 2007,
+        "doi": "10.1111/j.1398-9995.2006.01276.x",
+        "authors": "Bousquet PJ, Combescure C, Neukirch F, et al"
+      }
+    ],
+    "citation": "Bousquet PJ, Combescure C, Neukirch F, et al. Visual analog scales can assess the severity of rhinitis graded according to ARIA guidelines. Allergy. 2007;62(4):367-72. doi:10.1111/j.1398-9995.2006.01276.x",
+    "year": 2007,
+    "doi": "10.1111/j.1398-9995.2006.01276.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/17362246/",
+    "authors": "Bousquet PJ, Combescure C, Neukirch F, et al"
+  },
+  {
+    "id": "rcat",
+    "area": "Rhinitis and rhinosinusitis",
+    "name": "RCAT",
+    "appliesTo": "Allergic rhinitis",
+    "scenario": "Allergic rhinitis · Rhinitis Control Assessment Test (RCAT)",
+    "whatItMeasures": "Six-item patient-completed test of rhinitis symptom control: nasal congestion, sneezing, watery eyes, sleep interference, activity avoidance and self-assessed control.",
+    "pmids": [
+      "20306814"
+    ],
+    "citations": [
+      {
+        "pmid": "20306814",
+        "citation": "Schatz M, Meltzer EO, Nathan R, et al. Psychometric validation of the rhinitis control assessment test: a brief patient-completed instrument for evaluating rhinitis symptom control. Ann Allergy Asthma Immunol. 2010;104(2):118-24. doi:10.1016/j.anai.2009.11.063",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/20306814/",
+        "year": 2010,
+        "doi": "10.1016/j.anai.2009.11.063",
+        "authors": "Schatz M, Meltzer EO, Nathan R, et al"
+      }
+    ],
+    "citation": "Schatz M, Meltzer EO, Nathan R, et al. Psychometric validation of the rhinitis control assessment test: a brief patient-completed instrument for evaluating rhinitis symptom control. Ann Allergy Asthma Immunol. 2010;104(2):118-24. doi:10.1016/j.anai.2009.11.063",
+    "year": 2010,
+    "doi": "10.1016/j.anai.2009.11.063",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20306814/",
+    "authors": "Schatz M, Meltzer EO, Nathan R, et al"
+  },
+  {
+    "id": "snot-22",
+    "area": "Rhinitis and rhinosinusitis",
+    "name": "SNOT-22",
+    "appliesTo": "Chronic rhinosinusitis",
+    "scenario": "Chronic rhinosinusitis · 22-item Sinonasal Outcome Test (SNOT-22)",
+    "whatItMeasures": "22-item disease-specific quality-of-life instrument for chronic rhinosinusitis. The minimally important difference was 8.9 points.",
+    "pmids": [
+      "19793277"
+    ],
+    "citations": [
+      {
+        "pmid": "19793277",
+        "citation": "Hopkins C, Gillett S, Slack R, et al. Psychometric validity of the 22-item Sinonasal Outcome Test. Clin Otolaryngol. 2009;34(5):447-54. doi:10.1111/j.1749-4486.2009.01995.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/19793277/",
+        "year": 2009,
+        "doi": "10.1111/j.1749-4486.2009.01995.x",
+        "authors": "Hopkins C, Gillett S, Slack R, et al"
+      }
+    ],
+    "citation": "Hopkins C, Gillett S, Slack R, et al. Psychometric validity of the 22-item Sinonasal Outcome Test. Clin Otolaryngol. 2009;34(5):447-54. doi:10.1111/j.1749-4486.2009.01995.x",
+    "year": 2009,
+    "doi": "10.1111/j.1749-4486.2009.01995.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/19793277/",
+    "authors": "Hopkins C, Gillett S, Slack R, et al"
+  },
+  {
+    "id": "brown-grading",
+    "area": "Reaction grading",
+    "name": "Brown grading",
+    "appliesTo": "Systemic hypersensitivity reactions",
+    "scenario": "Systemic hypersensitivity reactions · Brown severity grading",
+    "whatItMeasures": "Three grades. Mild: skin only (urticaria, erythema, angioedema). Moderate: diaphoresis, nausea, vomiting, abdominal pain, presyncope, dyspnea, stridor, wheeze or chest/throat tightness. Severe: confusion, collapse, unconsciousness or incontinence. The moderate and severe grades define anaphylaxis.",
+    "pmids": [
+      "15316518"
+    ],
+    "citations": [
+      {
+        "pmid": "15316518",
+        "citation": "Brown SG. Clinical features and severity grading of anaphylaxis. J Allergy Clin Immunol. 2004;114(2):371-6. doi:10.1016/j.jaci.2004.04.029",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/15316518/",
+        "year": 2004,
+        "doi": "10.1016/j.jaci.2004.04.029",
+        "authors": "Brown SG"
+      }
+    ],
+    "citation": "Brown SG. Clinical features and severity grading of anaphylaxis. J Allergy Clin Immunol. 2004;114(2):371-6. doi:10.1016/j.jaci.2004.04.029",
+    "year": 2004,
+    "doi": "10.1016/j.jaci.2004.04.029",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/15316518/",
+    "authors": "Brown SG"
+  },
+  {
+    "id": "wao-scit-grading",
+    "area": "Reaction grading",
+    "name": "WAO SCIT grading",
+    "appliesTo": "Subcutaneous immunotherapy",
+    "scenario": "Subcutaneous immunotherapy · WAO systemic reaction grading system",
+    "whatItMeasures": "Uniform grading system for systemic reactions to subcutaneous allergen immunotherapy, proposed to help judge more accurately when epinephrine should be given.",
+    "pmids": [
+      "20144472"
+    ],
+    "citations": [
+      {
+        "pmid": "20144472",
+        "citation": "Cox L, Larenas-Linnemann D, Lockey RF, et al. Speaking the same language: The World Allergy Organization Subcutaneous Immunotherapy Systemic Reaction Grading System. J Allergy Clin Immunol. 2010;125(3):569-74, 574.e1-574.e7. doi:10.1016/j.jaci.2009.10.060",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/20144472/",
+        "year": 2010,
+        "doi": "10.1016/j.jaci.2009.10.060",
+        "authors": "Cox L, Larenas-Linnemann D, Lockey RF, et al"
+      }
+    ],
+    "citation": "Cox L, Larenas-Linnemann D, Lockey RF, et al. Speaking the same language: The World Allergy Organization Subcutaneous Immunotherapy Systemic Reaction Grading System. J Allergy Clin Immunol. 2010;125(3):569-74, 574.e1-574.e7. doi:10.1016/j.jaci.2009.10.060",
+    "year": 2010,
+    "doi": "10.1016/j.jaci.2009.10.060",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20144472/",
+    "authors": "Cox L, Larenas-Linnemann D, Lockey RF, et al"
+  },
+  {
+    "id": "acute-reaction-grading",
+    "area": "Reaction grading",
+    "name": "Delphi grading",
+    "appliesTo": "Acute allergic reactions",
+    "scenario": "Acute allergic reactions · Consensus severity grading system",
+    "whatItMeasures": "Consensus grading of acute allergic reactions, anaphylactic and nonanaphylactic, on a continuum from mild reactions to anaphylactic shock. Developed by a 21-member multidisciplinary Delphi panel for clinical care and research.",
+    "pmids": [
+      "33476673"
+    ],
+    "citations": [
+      {
+        "pmid": "33476673",
+        "citation": "Dribin TE, Schnadower D, Spergel JM, et al. Severity grading system for acute allergic reactions: A multidisciplinary Delphi study. J Allergy Clin Immunol. 2021;148(1):173-181. doi:10.1016/j.jaci.2021.01.003",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/33476673/",
+        "year": 2021,
+        "doi": "10.1016/j.jaci.2021.01.003",
+        "authors": "Dribin TE, Schnadower D, Spergel JM, et al"
+      }
+    ],
+    "citation": "Dribin TE, Schnadower D, Spergel JM, et al. Severity grading system for acute allergic reactions: A multidisciplinary Delphi study. J Allergy Clin Immunol. 2021;148(1):173-181. doi:10.1016/j.jaci.2021.01.003",
+    "year": 2021,
+    "doi": "10.1016/j.jaci.2021.01.003",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/33476673/",
+    "authors": "Dribin TE, Schnadower D, Spergel JM, et al"
+  },
+  {
+    "id": "fass",
+    "area": "Reaction grading",
+    "name": "FASS",
+    "appliesTo": "Food allergic reactions",
+    "scenario": "Food allergic reactions · Food Allergy Severity Score (oFASS, nFASS)",
+    "whatItMeasures": "Severity score in ordinal (oFASS, with 3 or 5 grades) and numerical (nFASS) formats that map onto each other. Validated against need for emergency care, adrenaline and critical medical treatment.",
+    "pmids": [
+      "34716996"
+    ],
+    "citations": [
+      {
+        "pmid": "34716996",
+        "citation": "Fernández-Rivas M, Gómez García I, Gonzalo-Fernández A, et al. Development and validation of the food allergy severity score. Allergy. 2022;77(5):1545-1558. doi:10.1111/all.15165",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/34716996/",
+        "year": 2022,
+        "doi": "10.1111/all.15165"
+      }
+    ],
+    "citation": "Fernández-Rivas M, Gómez García I, Gonzalo-Fernández A, et al. Development and validation of the food allergy severity score. Allergy. 2022;77(5):1545-1558. doi:10.1111/all.15165",
+    "year": 2022,
+    "doi": "10.1111/all.15165",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/34716996/"
+  },
+  {
+    "id": "pen-fast",
+    "area": "Drug hypersensitivity",
+    "name": "PEN-FAST",
+    "appliesTo": "Reported penicillin allergy",
+    "scenario": "Reported penicillin allergy · PEN-FAST clinical decision rule",
+    "whatItMeasures": "Point-of-care rule: reaction 5 or fewer years ago (2 points); anaphylaxis/angioedema or severe cutaneous adverse reaction (2 points); treatment required for the episode (1 point). A score under 3 classified low risk, with a negative predictive value of 96.3% for a positive allergy test.",
+    "pmids": [
+      "32176248"
+    ],
+    "citations": [
+      {
+        "pmid": "32176248",
+        "citation": "Trubiano JA, Vogrin S, Chua KYL, et al. Development and Validation of a Penicillin Allergy Clinical Decision Rule. JAMA Intern Med. 2020;180(5):745-752. doi:10.1001/jamainternmed.2020.0403",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/32176248/",
+        "year": 2020,
+        "doi": "10.1001/jamainternmed.2020.0403",
+        "authors": "Trubiano JA, Vogrin S, Chua KYL, et al"
+      }
+    ],
+    "citation": "Trubiano JA, Vogrin S, Chua KYL, et al. Development and Validation of a Penicillin Allergy Clinical Decision Rule. JAMA Intern Med. 2020;180(5):745-752. doi:10.1001/jamainternmed.2020.0403",
+    "year": 2020,
+    "doi": "10.1001/jamainternmed.2020.0403",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/32176248/",
+    "authors": "Trubiano JA, Vogrin S, Chua KYL, et al"
+  },
+  {
+    "id": "alden",
+    "area": "Drug hypersensitivity",
+    "name": "ALDEN",
+    "appliesTo": "Stevens-Johnson syndrome / TEN",
+    "scenario": "Stevens-Johnson syndrome / TEN · ALDEN drug causality algorithm",
+    "whatItMeasures": "Algorithm for assessing the causality of each drug in Stevens-Johnson syndrome or toxic epidermal necrolysis, with categories including \"very unlikely\", \"probable\" and \"very probable\". Its scores correlated strongly with EuroSCAR case-control results.",
+    "pmids": [
+      "20375998"
+    ],
+    "citations": [
+      {
+        "pmid": "20375998",
+        "citation": "Sassolas B, Haddad C, Mockenhaupt M, et al. ALDEN, an algorithm for assessment of drug causality in Stevens-Johnson Syndrome and toxic epidermal necrolysis: comparison with case-control analysis. Clin Pharmacol Ther. 2010;88(1):60-8. doi:10.1038/clpt.2009.252",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/20375998/",
+        "year": 2010,
+        "doi": "10.1038/clpt.2009.252",
+        "authors": "Sassolas B, Haddad C, Mockenhaupt M, et al"
+      }
+    ],
+    "citation": "Sassolas B, Haddad C, Mockenhaupt M, et al. ALDEN, an algorithm for assessment of drug causality in Stevens-Johnson Syndrome and toxic epidermal necrolysis: comparison with case-control analysis. Clin Pharmacol Ther. 2010;88(1):60-8. doi:10.1038/clpt.2009.252",
+    "year": 2010,
+    "doi": "10.1038/clpt.2009.252",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/20375998/",
+    "authors": "Sassolas B, Haddad C, Mockenhaupt M, et al"
+  },
+  {
+    "id": "scorten",
+    "area": "Drug hypersensitivity",
+    "name": "SCORTEN",
+    "appliesTo": "Toxic epidermal necrolysis",
+    "scenario": "Toxic epidermal necrolysis · SCORTEN",
+    "whatItMeasures": "Severity-of-illness score built from seven independent risk factors for death: age above 40 years, malignancy, heart rate above 120/min, initial epidermal detachment above 10%, serum urea above 10 mmol/L, serum glucose above 14 mmol/L and bicarbonate below 20 mmol/L. Each score point carried an odds ratio for death of 3.45.",
+    "pmids": [
+      "10951229"
+    ],
+    "citations": [
+      {
+        "pmid": "10951229",
+        "citation": "Bastuji-Garin S, Fouchard N, Bertocchi M, et al. SCORTEN: a severity-of-illness score for toxic epidermal necrolysis. J Invest Dermatol. 2000;115(2):149-53. doi:10.1046/j.1523-1747.2000.00061.x",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/10951229/",
+        "year": 2000,
+        "doi": "10.1046/j.1523-1747.2000.00061.x",
+        "authors": "Bastuji-Garin S, Fouchard N, Bertocchi M, et al"
+      }
+    ],
+    "citation": "Bastuji-Garin S, Fouchard N, Bertocchi M, et al. SCORTEN: a severity-of-illness score for toxic epidermal necrolysis. J Invest Dermatol. 2000;115(2):149-53. doi:10.1046/j.1523-1747.2000.00061.x",
+    "year": 2000,
+    "doi": "10.1046/j.1523-1747.2000.00061.x",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/10951229/",
+    "authors": "Bastuji-Garin S, Fouchard N, Bertocchi M, et al"
+  },
+  {
+    "id": "regiscar-dress",
+    "area": "Drug hypersensitivity",
+    "name": "RegiSCAR",
+    "appliesTo": "DRESS",
+    "scenario": "DRESS · RegiSCAR scoring system",
+    "whatItMeasures": "Standardized scoring system the RegiSCAR registry used to validate cases as probable or definite DRESS.",
+    "pmids": [
+      "23855313"
+    ],
+    "citations": [
+      {
+        "pmid": "23855313",
+        "citation": "Kardaun SH, Sekula P, Valeyrie-Allanore L, et al. Drug reaction with eosinophilia and systemic symptoms (DRESS): an original multisystem adverse drug reaction. Results from the prospective RegiSCAR study. Br J Dermatol. 2013;169(5):1071-80. doi:10.1111/bjd.12501",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/23855313/",
+        "year": 2013,
+        "doi": "10.1111/bjd.12501",
+        "authors": "Kardaun SH, Sekula P, Valeyrie-Allanore L, et al"
+      }
+    ],
+    "citation": "Kardaun SH, Sekula P, Valeyrie-Allanore L, et al. Drug reaction with eosinophilia and systemic symptoms (DRESS): an original multisystem adverse drug reaction. Results from the prospective RegiSCAR study. Br J Dermatol. 2013;169(5):1071-80. doi:10.1111/bjd.12501",
+    "year": 2013,
+    "doi": "10.1111/bjd.12501",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/23855313/",
+    "authors": "Kardaun SH, Sekula P, Valeyrie-Allanore L, et al"
+  },
+  {
+    "id": "naranjo",
+    "area": "Drug hypersensitivity",
+    "name": "Naranjo",
+    "appliesTo": "Adverse drug reactions",
+    "scenario": "Adverse drug reactions · Naranjo method",
+    "whatItMeasures": "Method for estimating the probability of adverse drug reactions. Items and scoring are in the full paper.",
+    "pmids": [
+      "7249508"
+    ],
+    "citations": [
+      {
+        "pmid": "7249508",
+        "citation": "Naranjo CA, Busto U, Sellers EM, et al. A method for estimating the probability of adverse drug reactions. Clin Pharmacol Ther. 1981;30(2):239-45. doi:10.1038/clpt.1981.154",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/7249508/",
+        "year": 1981,
+        "doi": "10.1038/clpt.1981.154",
+        "authors": "Naranjo CA, Busto U, Sellers EM, et al"
+      }
+    ],
+    "citation": "Naranjo CA, Busto U, Sellers EM, et al. A method for estimating the probability of adverse drug reactions. Clin Pharmacol Ther. 1981;30(2):239-45. doi:10.1038/clpt.1981.154",
+    "year": 1981,
+    "doi": "10.1038/clpt.1981.154",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/7249508/",
+    "authors": "Naranjo CA, Busto U, Sellers EM, et al"
+  },
+  {
+    "id": "rema",
+    "area": "Mast cell disease",
+    "name": "REMA",
+    "appliesTo": "Anaphylaxis without skin mastocytosis",
+    "scenario": "Anaphylaxis without skin mastocytosis · REMA score",
+    "whatItMeasures": "Score from the Spanish Network on Mastocytosis that predicts clonal mast cell activation disorders in patients with anaphylaxis without skin mastocytosis, to select patients for bone marrow examination. A reassessment of 1204 patients found high sensitivity (87%-90%) but limited specificity (34%-35%).",
+    "pmids": [
+      "42156185"
+    ],
+    "citations": [
+      {
+        "pmid": "42156185",
+        "citation": "Sucre-Adrianza I, Caligaris H, Morales-Cabeza C, et al. The REMA Score Revisited: An Optimized Algorithm for Early Prediction of Clonal Mast Cell Disease. Allergy. 2026;81(8):2792-2803. doi:10.1111/all.70379",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/42156185/",
+        "year": 2026,
+        "doi": "10.1111/all.70379",
+        "authors": "Sucre-Adrianza I, Caligaris H, Morales-Cabeza C, et al"
+      }
+    ],
+    "citation": "Sucre-Adrianza I, Caligaris H, Morales-Cabeza C, et al. The REMA Score Revisited: An Optimized Algorithm for Early Prediction of Clonal Mast Cell Disease. Allergy. 2026;81(8):2792-2803. doi:10.1111/all.70379",
+    "year": 2026,
+    "doi": "10.1111/all.70379",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42156185/",
+    "authors": "Sucre-Adrianza I, Caligaris H, Morales-Cabeza C, et al"
+  },
+  {
+    "id": "eoe-endoscopy",
+    "area": "Eosinophilic esophagitis",
+    "name": "EREFS",
+    "appliesTo": "Eosinophilic esophagitis",
+    "scenario": "Eosinophilic esophagitis · Endoscopic grading system (EREFS)",
+    "whatItMeasures": "Endoscopic grading of four major features (rings, furrows, exudates, edema) plus stricture and crepe-paper esophagus, giving common nomenclature and severity scores for disease activity.",
+    "pmids": [
+      "22619364"
+    ],
+    "citations": [
+      {
+        "pmid": "22619364",
+        "citation": "Hirano I, Moy N, Heckman MG, et al. Endoscopic assessment of the oesophageal features of eosinophilic oesophagitis: validation of a novel classification and grading system. Gut. 2013;62(4):489-95. doi:10.1136/gutjnl-2011-301817",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/22619364/",
+        "year": 2013,
+        "doi": "10.1136/gutjnl-2011-301817",
+        "authors": "Hirano I, Moy N, Heckman MG, et al"
+      }
+    ],
+    "citation": "Hirano I, Moy N, Heckman MG, et al. Endoscopic assessment of the oesophageal features of eosinophilic oesophagitis: validation of a novel classification and grading system. Gut. 2013;62(4):489-95. doi:10.1136/gutjnl-2011-301817",
+    "year": 2013,
+    "doi": "10.1136/gutjnl-2011-301817",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/22619364/",
+    "authors": "Hirano I, Moy N, Heckman MG, et al"
+  },
+  {
+    "id": "eoe-histology",
+    "area": "Eosinophilic esophagitis",
+    "name": "EoEHSS",
+    "appliesTo": "Eosinophilic esophagitis",
+    "scenario": "Eosinophilic esophagitis · Histology scoring system (EoEHSS)",
+    "whatItMeasures": "Biopsy score of eight features (eosinophil density, basal zone hyperplasia, eosinophil abscesses, eosinophil surface layering, dilated intercellular spaces, surface epithelial alteration, dyskeratotic epithelial cells, lamina propria fibrosis), each graded for severity and staged for extent from 0 (normal) to 3.",
+    "pmids": [
+      "26857345"
+    ],
+    "citations": [
+      {
+        "pmid": "26857345",
+        "citation": "Collins MH, Martin LJ, Alexander ES, et al. Newly developed and validated eosinophilic esophagitis histology scoring system and evidence that it outperforms peak eosinophil count for disease diagnosis and monitoring. Dis Esophagus. 2017;30(3):1-8. doi:10.1111/dote.12470",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/26857345/",
+        "year": 2017,
+        "doi": "10.1111/dote.12470",
+        "authors": "Collins MH, Martin LJ, Alexander ES, et al"
+      }
+    ],
+    "citation": "Collins MH, Martin LJ, Alexander ES, et al. Newly developed and validated eosinophilic esophagitis histology scoring system and evidence that it outperforms peak eosinophil count for disease diagnosis and monitoring. Dis Esophagus. 2017;30(3):1-8. doi:10.1111/dote.12470",
+    "year": 2017,
+    "doi": "10.1111/dote.12470",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/26857345/",
+    "authors": "Collins MH, Martin LJ, Alexander ES, et al"
+  },
+  {
+    "id": "eesai",
+    "area": "Eosinophilic esophagitis",
+    "name": "EEsAI",
+    "appliesTo": "Eosinophilic esophagitis, adults",
+    "scenario": "Eosinophilic esophagitis, adults · Symptom-based activity index (EEsAI)",
+    "whatItMeasures": "Patient-reported activity index of 7 items on dysphagia, behavioral adaptation to dysphagia and pain on swallowing, with a 7-day recall.",
+    "pmids": [
+      "25160980"
+    ],
+    "citations": [
+      {
+        "pmid": "25160980",
+        "citation": "Schoepfer AM, Straumann A, Panczak R, et al. Development and validation of a symptom-based activity index for adults with eosinophilic esophagitis. Gastroenterology. 2014;147(6):1255-66.e21. doi:10.1053/j.gastro.2014.08.028",
+        "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/25160980/",
+        "year": 2014,
+        "doi": "10.1053/j.gastro.2014.08.028",
+        "authors": "Schoepfer AM, Straumann A, Panczak R, et al"
+      }
+    ],
+    "citation": "Schoepfer AM, Straumann A, Panczak R, et al. Development and validation of a symptom-based activity index for adults with eosinophilic esophagitis. Gastroenterology. 2014;147(6):1255-66.e21. doi:10.1053/j.gastro.2014.08.028",
+    "year": 2014,
+    "doi": "10.1053/j.gastro.2014.08.028",
+    "pubmed": "https://pubmed.ncbi.nlm.nih.gov/25160980/",
+    "authors": "Schoepfer AM, Straumann A, Panczak R, et al"
+  }
+]
