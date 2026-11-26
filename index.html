@@ -977,27 +977,85 @@
         "</div>";
     }
 
+    function drugsHubBackBtn() {
+      return '<button type="button" class="back" data-drugs-hub-back>' +
+        '<svg viewBox="0 0 12 20" width="10" height="17" aria-hidden="true"><path d="M10 1.5 2 10l8 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        "<span>Drugs</span></button>";
+    }
+
+    /* Sticky keyword above 교차반응|첨가제 so tab switches keep the same query context. */
+    function drugsHubKeywordHeader() {
+      const entry = selectedDrug();
+      if (entry) return drugHeader(entry, false);
+      const q = String(state.additiveQuery || state.drugQuery || "").trim();
+      if (!q) return "";
+      return '<div class="headline drugs-hub-keyword"><h2 class="screen-title">' + esc(q) + "</h2></div>";
+    }
+
+    function drugsHubSearchOnly() {
+      return '<div class="drug-search">' +
+        '<input id="drug-search" type="search" placeholder="Search a drug" value="' + esc(state.drugQuery) +
+        '" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Search a drug">' +
+        '<div class="suggestions" id="drug-suggestions">' + suggestionButtons(state.drugQuery) + "</div></div>";
+    }
+
+    function renderDrugsHubCross() {
+      const segment = drugsHubSegmentBar();
+      const entry = selectedDrug();
+      const keyword = drugsHubKeywordHeader();
+      if (!entry) {
+        return '<h2 class="screen-title drug-search-title">약물 교차반응</h2>' +
+          segment +
+          drugsHubSearchOnly() +
+          '<p class="search-prompt">Search a drug to see stated pairs.</p>' +
+          renderDrugBrowse();
+      }
+      const safer = Array.isArray(entry.safer) ? entry.safer : [];
+      const high = Array.isArray(entry.high) ? entry.high : [];
+      const graph = renderDrugGraph(entry);
+      let groups;
+      if (state.direction === "segmented") {
+        const open = state.drugSegment === "high" ? "high" : "safer";
+        groups = '<div class="segment" role="radiogroup" aria-label="Stated pairs">' +
+          '<button type="button" role="radio" class="is-safer" data-drug-segment="safer" aria-checked="' + (open === "safer") + '">Safer alternatives</button>' +
+          '<button type="button" role="radio" data-drug-segment="high" aria-checked="' + (open === "high") + '">High cross-reactivity</button>' +
+          '</div><div class="groups">' + drugPairGroupsHtml(entry, open) + "</div>";
+      } else if (state.direction === "split") {
+        groups = '<div class="groups split">' + pairCard("safer", safer, true) + pairCard("high", high, true) + "</div>";
+      } else {
+        groups = '<div class="groups">' + pairCard("safer", safer, true) + pairCard("high", high, true) + "</div>";
+      }
+      return drugsHubBackBtn() + drugsHubSearchOnly() + keyword + segment + graph + groups;
+    }
+
+    function renderDrugsHubAdditives() {
+      const segment = drugsHubSegmentBar();
+      const keyword = drugsHubKeywordHeader();
+      const source = '<p class="additive-source">' +
+        esc(ADDITIVES && ADDITIVES.sourceNotice ? ADDITIVES.sourceNotice : "") + "</p>";
+      const search = '<div class="drug-search additive-search">' +
+        '<input id="additive-search" type="search" placeholder="약물 이름 검색" value="' +
+        esc(state.additiveQuery) + '" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="약물 이름 검색">' +
+        '<button type="button" class="additive-search-btn" data-additive-search>검색</button></div>';
+
+      if (state.additiveSelected) {
+        const head = keyword ||
+          '<div class="headline drugs-hub-keyword"><h2 class="screen-title">' +
+          esc(state.additiveSelected.name || "") + "</h2></div>";
+        return drugsHubBackBtn() + head + segment + renderAdditiveDetail() + source;
+      }
+      if (keyword) {
+        return drugsHubBackBtn() + keyword + segment + search + renderAdditiveResults() + source;
+      }
+      return '<h2 class="screen-title additive-title">첨가제 검색</h2>' +
+        segment +
+        '<p class="subtitle">MFDS-listed drugs · stated ingredients / additives only</p>' +
+        search + renderAdditiveResults() + source;
+    }
+
     function renderDrugsHub() {
-      if (state.drugsSegment === "additives") {
-        const prev = state.screen;
-        state.screen = "additives";
-        let body = renderAdditives();
-        state.screen = prev;
-        body = body.replace(/^<button type="button" class="back" data-go="back">[\s\S]*?<\/button>/, "");
-        return drugsHubSegmentBar() + body;
-      }
-      const prev = state.screen;
-      state.screen = "drug";
-      let body = renderDrug();
-      state.screen = prev;
-      body = body.replace(/^<button type="button" class="back" data-go="back">[\s\S]*?<\/button>/, "");
-      if (state.drugId) {
-        const hubBack = '<button type="button" class="back" data-drugs-hub-back>' +
-          '<svg viewBox="0 0 12 20" width="10" height="17" aria-hidden="true"><path d="M10 1.5 2 10l8 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-          "<span>Drugs</span></button>";
-        body = hubBack + body;
-      }
-      return drugsHubSegmentBar() + body;
+      if (state.drugsSegment === "additives") return renderDrugsHubAdditives();
+      return renderDrugsHubCross();
     }
 
     function lookupTable() {
@@ -6295,10 +6353,36 @@
         if (state.drugsSegment === next) return;
         state.drugsSegment = next;
         if (next === "additives") {
-          resetAdditiveState();
-          ensureAdditiveIndex().then(() => render()).catch(() => render());
-        } else {
-          resetDrugBrowseState();
+          /* Keep drug keyword; seed MFDS search from the same query context. */
+          const entry = selectedDrug();
+          const seed = (entry && entry.name) ||
+            String(state.drugQuery || "").trim() ||
+            String(state.additiveQuery || "").trim();
+          state.additiveSelected = null;
+          state.additiveDetail = null;
+          state.additiveDetailStatus = "idle";
+          ensureAdditiveIndex().then(() => {
+            if (seed && typeof ADDITIVES !== "undefined" && ADDITIVES.search) {
+              state.additiveQuery = seed;
+              state.additiveResults = ADDITIVES.search(seed);
+              state.additiveHasMore = ADDITIVES.hasMore();
+            }
+            render();
+          }).catch(() => render());
+          return;
+        }
+        /* Returning to 교차반응: keep drugId; if missing, resolve from additive query. */
+        if (!state.drugId) {
+          const q = String(state.additiveQuery || state.drugQuery || "").trim();
+          if (q) {
+            const hit = exactDrug(q);
+            if (hit) {
+              state.drugId = hit.id;
+              state.drugQuery = "";
+            } else {
+              state.drugQuery = q;
+            }
+          }
         }
         render();
         return;
