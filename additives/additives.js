@@ -17,12 +17,46 @@
   let cachedQuery = "";
   let cachedTail = [];
 
+  /* Directory that contains additives.js — stable under /allergy-wiki-phone-preview/. */
+  function additivesDir() {
+    try {
+      const scripts = document.getElementsByTagName("script");
+      for (let i = scripts.length - 1; i >= 0; i -= 1) {
+        const src = scripts[i].src || "";
+        const idx = src.indexOf("/additives/additives.js");
+        if (idx !== -1) return src.slice(0, idx + "/additives/".length);
+      }
+    } catch (_err) {
+      /* ignore */
+    }
+    try {
+      return new URL("additives/", document.baseURI).href;
+    } catch (_err2) {
+      return "additives/";
+    }
+  }
+
+  function drugsJsonUrl() {
+    return additivesDir() + "drugs.json";
+  }
+
+  function isStaticPagesHost() {
+    try {
+      const host = String(location.hostname || "");
+      if (!host) return false;
+      if (host === "127.0.0.1" || host === "localhost") return false;
+      return host.indexOf("github.io") !== -1 || host.indexOf("pages.dev") !== -1;
+    } catch (_err) {
+      return false;
+    }
+  }
+
   function loadDrugs() {
     if (drugs) return Promise.resolve(drugs);
     if (loadPromise) return loadPromise;
-    loadPromise = fetch("additives/drugs.json", { cache: "force-cache" })
+    loadPromise = fetch(drugsJsonUrl(), { cache: "default" })
       .then((r) => {
-        if (!r.ok) throw new Error("Failed to load drugs.json");
+        if (!r.ok) throw new Error("Failed to load drugs.json (" + r.status + ")");
         return r.json();
       })
       .then((rows) => {
@@ -131,31 +165,38 @@
 
   function detailEndpoints(code) {
     const q = "code=" + encodeURIComponent(code);
+    const worker = MFDS_PAGES_PROXY + "?" + q;
+    /* GitHub Pages has no /api/mfds-detail — skip doomed 404s and hit Worker first. */
+    if (isStaticPagesHost()) return [worker];
     const urls = [];
-    /* Local preview proxy (serve-preview.py on :4173). */
     urls.push("/api/mfds-detail?" + q);
-    /* Relative path under GitHub Pages project root (usually absent). */
     try {
       if (typeof document !== "undefined" && document.baseURI) {
-        urls.push(new URL("api/mfds-detail?" + q, document.baseURI).href);
+        const rel = new URL("api/mfds-detail?" + q, document.baseURI).href;
+        if (urls.indexOf(rel) === -1) urls.push(rel);
       }
     } catch (_err) {
-      /* ignore bad baseURI */
+      /* ignore */
     }
-    /* CORS-safe Workers proxy for static Pages deploy. */
-    urls.push(MFDS_PAGES_PROXY + "?" + q);
+    urls.push(worker);
     return urls;
   }
 
   function fetchJsonDetail(url) {
-    return fetch(url).then((r) => {
-      const ct = String(r.headers.get("content-type") || "").toLowerCase();
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      if (ct.indexOf("application/json") === -1) {
-        throw new Error("Non-JSON detail response");
+    return fetch(url, { method: "GET", mode: "cors", credentials: "omit", cache: "no-cache" }).then(
+      (r) => {
+        if (!r.ok) throw new Error("HTTP " + r.status + " @ " + url);
+        return r.text().then((text) => {
+          let payload;
+          try {
+            payload = JSON.parse(text);
+          } catch (_err) {
+            throw new Error("Non-JSON detail response @ " + url);
+          }
+          return payload;
+        });
       }
-      return r.json();
-    });
+    );
   }
 
   function fetchDetail(code) {
@@ -165,9 +206,10 @@
     }
     const endpoints = detailEndpoints(safe);
     let idx = 0;
+    let lastErr = null;
     function tryNext() {
       if (idx >= endpoints.length) {
-        return Promise.reject(new Error("MFDS detail unavailable"));
+        return Promise.reject(lastErr || new Error("MFDS detail unavailable"));
       }
       const url = endpoints[idx];
       idx += 1;
@@ -181,7 +223,10 @@
           detail.officialUrl = officialMfdsUrl(safe);
           return detail;
         })
-        .catch(() => tryNext());
+        .catch((err) => {
+          lastErr = err;
+          return tryNext();
+        });
     }
     return tryNext();
   }
@@ -195,6 +240,7 @@
     parseMfdsHtml: parseMfdsHtml,
     officialMfdsUrl: officialMfdsUrl,
     mfdsPagesProxy: MFDS_PAGES_PROXY,
+    drugsJsonUrl: drugsJsonUrl,
     sourceNotice:
       "본 정보는 식품의약품안전처가 공공데이터포털을 통해 제공하는 정보를 바탕으로 합니다. (https://www.data.go.kr/data/15095677/openapi.do)"
   };

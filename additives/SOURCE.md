@@ -6,8 +6,10 @@ Copied from `lekis1020/drug_additives` (`drug_additives/drugs.json`) for local n
 - Detail ingredients/additives are not stored here; the phone preview fetches MFDS item detail at runtime
   (`https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetailCache?cacheSeq={code}`), same as NetworkManager.swift.
 - Local preview: `serve-preview.py` proxies `GET /api/mfds-detail?code=` → MFDS HTML.
-- GitHub Pages (static): client falls back to Cloudflare Worker
+- GitHub Pages (static): client calls Cloudflare Worker **first**
   `https://allergy-mfds-detail.lekis1020.workers.dev/?code=` (CORS-safe JSON `{ok, html}`).
+  Absolute `/api/mfds-detail` is **not** used on `github.io` (it 404s at site root, outside
+  `/allergy-wiki-phone-preview/`). `drugs.json` is resolved from the `additives.js` script URL.
   No additives/ingredients are invented; the Worker only relays stated MFDS HTML.
 - Public-data notice: https://www.data.go.kr/data/15095677/openapi.do
 - Do not invent additives, ingredients, or clinical claims.

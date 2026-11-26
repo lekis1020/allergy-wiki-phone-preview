@@ -1,17 +1,18 @@
 # allergy-wiki phone-preview (static)
 
-Public static deploy of `phone-preview/preview/layout` from [allergy-wiki](https://github.com/lekis1020/allergy-wiki) PR #5 tip `27a82b923764ccd36b386810323b8cbc9a3d13ea`.
+Public static deploy of `phone-preview/preview/layout` from [allergy-wiki](https://github.com/lekis1020/allergy-wiki) PR #5 tip `ca5115df7298f2a98c19b298d220a6f8d78dfcfa`.
 
 Live: https://lekis1020.github.io/allergy-wiki-phone-preview/
 
 ## Static (works)
-- UI tabs, scoring tools, hospitals map JSON, additives name search (`additives/drugs.json`)
-- Additives **detail** (주성분/첨가제): client falls back to Cloudflare Worker
-  `https://allergy-mfds-detail.lekis1020.workers.dev/?code=` which relays stated MFDS HTML (same fields as local `/api/mfds-detail`; nothing invented)
+- UI tabs, scoring tools, hospitals map JSON, additives name search (`additives/drugs.json` via script-base URL)
+- Additives **detail**: on `github.io`, client calls Cloudflare Worker
+  `https://allergy-mfds-detail.lekis1020.workers.dev/?code=` first (CORS JSON `{ok,html}`).
+  Does **not** call absolute `/api/mfds-detail` on Pages (that 404s at site root outside `/allergy-wiki-phone-preview/`).
 - Papers snapshot (`papers-timeline.json`)
 
 ## API-limited (404 without serve-preview.py)
 - `/api/korea-env-today`
 - `/api/my-allergy-papers`
 - `/api/papers-feed-meta`
-- `/api/mfds-detail` (local-only path; Pages uses the Worker fallback above)
+- `/api/mfds-detail` (local-only; Pages uses Worker above)

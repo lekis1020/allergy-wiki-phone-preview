@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Keep relative assets under /allergy-wiki-phone-preview/ on GitHub Pages. -->
+  <base href="./">
   <title>Layout directions</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
@@ -5981,6 +5983,10 @@
       const allergenSearchFocused = !!(allergenSearchEl && document.activeElement === allergenSearchEl);
       const allergenCaretStart = allergenSearchFocused ? allergenSearchEl.selectionStart : null;
       const allergenCaretEnd = allergenSearchFocused ? allergenSearchEl.selectionEnd : null;
+      const additiveSearchEl = document.getElementById("additive-search");
+      const additiveSearchFocused = !!(additiveSearchEl && document.activeElement === additiveSearchEl);
+      const additiveCaretStart = additiveSearchFocused ? additiveSearchEl.selectionStart : null;
+      const additiveCaretEnd = additiveSearchFocused ? additiveSearchEl.selectionEnd : null;
       const mapEl = document.getElementById("map-search");
       const mapFocused = !!(mapEl && document.activeElement === mapEl);
       const mapCaretStart = mapFocused ? mapEl.selectionStart : null;
@@ -6032,6 +6038,16 @@
             input.focus();
             const start = allergenCaretStart == null ? input.value.length : allergenCaretStart;
             const end = allergenCaretEnd == null ? start : allergenCaretEnd;
+            try { input.setSelectionRange(start, end); } catch (err) { /* type=search may reject a caret */ }
+          }
+          return;
+        }
+        if ((additiveSearchFocused || focusSelector === "#additive-search") && !mapFocused) {
+          const input = content.querySelector("#additive-search");
+          if (input) {
+            input.focus();
+            const start = additiveCaretStart == null ? input.value.length : additiveCaretStart;
+            const end = additiveCaretEnd == null ? start : additiveCaretEnd;
             try { input.setSelectionRange(start, end); } catch (err) { /* type=search may reject a caret */ }
           }
           return;
@@ -6392,6 +6408,8 @@
       }
       if (event.target.id === "additive-search") {
         state.additiveQuery = event.target.value;
+        /* Live search so Korean IME users need not rely on 검색 / Enter alone. */
+        runAdditiveSearch(event.target.value);
         return;
       }
       if (event.target.dataset && event.target.dataset.scoreNumber) {
